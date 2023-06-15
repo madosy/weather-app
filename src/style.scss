@@ -1,0 +1,344 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+
+body {
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  font-family: "Lato", sans-serif;
+  background-color: black;
+}
+
+dialog {
+  z-index: 10;
+}
+
+.app-container {
+  width: --webkit-fill-available;
+  height: 100%;
+  position: relative;
+}
+
+.bg-container {
+  box-sizing: border-box;
+  padding: 50px 10%;
+  padding-bottom: 100px;
+  z-index: 2;
+  position: absolute;
+  background-color: black;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+
+  transition: transform 0.5s cubic-bezier(0.15, 1.67, 0.52, 0.96);
+  &.move {
+    transform: translateY(-300px);
+
+    button.move::before {
+      font-family: "Lato", sans-serif;
+      content: "LESS";
+      display: block;
+      position: absolute;
+      font-size: 1.05rem;
+      letter-spacing: 4px;
+      font-weight: 300;
+      top: 14px;
+      left: 22px;
+      color: black;
+    }
+    button.move::after {
+      background-image: url(./assets/less-icon.svg);
+      background-position-y: 2px;
+    }
+  }
+
+  .button-container {
+    grid-area: button;
+    position: relative;
+    align-self: end;
+    justify-self: end;
+  }
+
+  button.move {
+    appearance: none;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    height: 50px;
+    width: 130px;
+    cursor: pointer;
+  }
+
+  button.move::before {
+    font-family: "Lato", sans-serif;
+    content: "MORE";
+    display: block;
+    position: absolute;
+    font-size: 1rem;
+    letter-spacing: 2px;
+    font-weight: 300;
+    top: 15px;
+    left: 20px;
+    color: black;
+  }
+
+  button.move::after {
+    content: "";
+    display: block;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    height: 40px;
+    width: 40px;
+    border-radius: 30px;
+    background-color: black;
+    background-image: url(./assets/more-icon.svg);
+    background-position: center;
+    background-size: contain;
+  }
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr min-content min-content;
+  grid-template-areas:
+    "quote blank"
+    "greeting greeting"
+    "time time"
+    "location button";
+
+  .bg-info {
+    text-transform: uppercase;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 0.7rem;
+    font-weight: 300;
+    opacity: 80%;
+    color: white;
+    a {
+      color: white;
+      text-decoration: none;
+    }
+  }
+  .quote {
+    grid-area: quote;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 300;
+    font-style: italic;
+    text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    .author {
+      margin-top: 10px;
+      display: block;
+      font-weight: 500;
+    }
+  }
+  .greeting-container {
+    grid-area: greeting;
+    align-self: end;
+    display: flex;
+    align-items: flex-start;
+    position: relative;
+    left: -20px;
+
+    .condition-icon {
+      position: relative;
+      width: 30px;
+      height: 30px;
+      display: inline-block;
+      background-position: center;
+      background-size: cover;
+      margin-right: 5px;
+    }
+  }
+  .greeting {
+    display: inline-block;
+    text-transform: uppercase;
+    font-weight: 300;
+    letter-spacing: 2px;
+    font-size: 1.5rem;
+    word-spacing: 3px;
+    color: white;
+    opacity: 80%;
+    text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  }
+  .time {
+    grid-area: time;
+    font-size: calc(30px + 10svw);
+    font-weight: 900;
+    align-self: flex-start;
+    color: white;
+    text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  }
+  .location {
+    grid-area: location;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+    word-spacing: 3px;
+    color: white;
+    opacity: 80%;
+    text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.hidden-content {
+  box-sizing: border-box;
+  background-color: white;
+  z-index: 1;
+  position: absolute;
+  bottom: 0;
+  height: 300px;
+  width: 100%;
+  padding: 30px;
+
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: min-content 1fr;
+  grid-template-areas:
+    "preference preference"
+    "current forecast";
+
+  .preference {
+    grid-area: preference;
+    visibility: hidden;
+  }
+  .current-grid {
+    grid-area: current;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: min-content 1fr;
+    grid-template-areas:
+      "title1 title2 title3 title4"
+      "condition temperature feelslike wind";
+    place-items: center;
+    place-self: center;
+    font-weight: bold;
+
+    padding: 5px;
+    column-gap: 30px;
+    justify-content: center;
+
+    .title {
+      font-size: 1rem;
+      text-transform: uppercase;
+      font-weight: 500;
+      justify-content: center;
+    }
+    .title1 {
+      grid-area: title1;
+    }
+    .title2 {
+      grid-area: title2;
+    }
+    .title3 {
+      grid-area: title3;
+    }
+    .title4 {
+      grid-area: title4;
+    }
+
+    .condition,
+    .temperature,
+    .feels-like,
+    .wind {
+      font-weight: 500;
+      display: grid;
+      grid-template-rows: min-content 1fr;
+      font-size: 2rem;
+    }
+
+    .condition {
+      display: flex;
+      flex-direction: column;
+      .condition-name {
+        font-size: 1rem;
+        text-transform: capitalize;
+      }
+    }
+  }
+  .forecast-grid {
+    grid-area: forecast;
+    display: grid;
+    column-gap: 20px;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: min-content 1fr;
+    grid-template-areas:
+      "ftitle1 ftitle2 ftitle3"
+      "today tomorrow day-after";
+    place-items: center;
+    place-self: center;
+    font-weight: bold;
+
+    .title {
+      font-size: 1rem;
+      text-transform: uppercase;
+      font-weight: 500;
+      justify-content: center;
+    }
+
+    .ftitle1 {
+      grid-area: ftitle1;
+    }
+    .ftitle2 {
+      grid-area: ftitle2;
+    }
+    .ftitle3 {
+      grid-area: ftitle3;
+    }
+
+    .today,
+    .tomorrow,
+    .day-after-tomorrow {
+      place-self: center;
+      column-gap: 10px;
+      display: grid;
+      justify-items: center;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr min-content;
+      grid-template-areas:
+        "img img"
+        "high low";
+      .high {
+        color: red;
+      }
+
+      img {
+        grid-area: img;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .bg-container {
+    grid-template-rows: 1fr 1fr min-content min-content min-content !important;
+
+    padding-bottom: 30px;
+  }
+  .bg-container .quote {
+    grid-area: unset;
+    grid-column: span 2;
+  }
+
+  .bg-container .button-container {
+    grid-area: unset;
+    grid-column: span 2;
+    margin-top: 30px;
+  }
+
+  .bg-container .greeting,
+  .bg-container .location {
+    font-size: 1.3rem;
+  }
+  .bg-container .time {
+    font-size: 4rem;
+  }
+  .bg-container .location {
+    grid-column: span 2;
+  }
+}

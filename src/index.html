@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title title3>Weather App</title title3>
+  </head>
+  <body>
+    <div class="app-container">
+      <div class="bg-container">
+        <div class="bg-info"></div>
+        <div class="quote"></div>
+        <div class="greeting-container">
+          <span class="condition-icon"></span>
+          <div class="greeting"></div>
+        </div>
+        <div class="time"></div>
+        <div class="location">in Atlanta, GA</div>
+        <div class="button-container">
+          <button class="move"></button>
+        </div>
+      </div>
+      <div class="hidden-content">
+        <div class="preference">
+          <button class="location">Set Location</button>
+          Hello I'm a hidden content!
+        </div>
+
+        <div class="current-grid">
+          <span class="title1 title">Condition</span>
+          <div class="condition">
+            <img class="condition-icon" />
+            <span class="condition-name"></span>
+          </div>
+          <span class="title2 title">Temperature</span>
+          <div class="temperature">
+            <span class="data"></span><span class="unit"></span>
+          </div>
+          <span class="title3 title">Feels-Like</span>
+          <div class="feels-like">
+            <span class="data"></span><span class="unit"></span>
+          </div>
+          <span class="title4 title">Wind</span>
+          <div class="wind"></div>
+        </div>
+
+        <div class="forecast-grid">
+          <span class="title ftitle1">Today</span>
+          <div class="today">
+            <img src="" alt="" class="icon" />
+            <span class="high">30</span>
+            <span class="low">20</span>
+          </div>
+          <span class="title ftitle2">Tomorrow</span>
+          <div class="tomorrow">
+            <img src="" alt="" class="icon" />
+            <span class="high">30</span>
+            <span class="low">20</span>
+          </div>
+          <span class="title ftitle3">Day After Tomorrow</span>
+          <div class="day-after-tomorrow">
+            <img src="" alt="" class="icon" />
+            <span class="high">30</span>
+            <span class="low">20</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <dialog class="location">
+      <form>
+        <input type="text" id="location" name="location" required />
+        <button type="submit"></button>
+      </form>
+    </dialog>
+  </body>
+</html>
