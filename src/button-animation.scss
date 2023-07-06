@@ -1,0 +1,44 @@
+.button-container {
+  position: relative;
+  align-self: end;
+  justify-self: end;
+}
+
+button.move {
+  appearance: none;
+  background-color: rgba(255, 255, 255, 0.9);
+  color: white;
+  border: none;
+  border-radius: 30px;
+  height: 50px;
+  width: 130px;
+  cursor: pointer;
+}
+
+button.move::before {
+  font-family: "Lato", sans-serif;
+  content: "MORE";
+  display: block;
+  position: absolute;
+  font-size: 1rem;
+  letter-spacing: 2px;
+  font-weight: 300;
+  top: 15px;
+  left: 20px;
+  color: black;
+}
+
+button.move::after {
+  content: "";
+  display: block;
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  height: 40px;
+  width: 40px;
+  border-radius: 30px;
+  background-color: black;
+  background-image: url(./assets/more-icon.svg);
+  background-position: center;
+  background-size: contain;
+}

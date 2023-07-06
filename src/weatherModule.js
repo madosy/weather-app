@@ -6,6 +6,27 @@ const weatherModule = (() => {
     return weatherData;
   }
 
+  async function updateWeatherData() {
+    const lat = localStorage.getItem("madosy_weather_app.lat");
+    const lon = localStorage.getItem("madosy_weather_app.lon");
+    const weatherData = await getWeatherData(lat, lon);
+    updateSplash(weatherData);
+    updateCurrentWeather(weatherData);
+    updateForecast(weatherData);
+    console.log(weatherData);
+  }
+
+  function updateSplash(weatherData) {
+    const temperature = weatherData.current.temp_f;
+    const weatherDataContainer = document.querySelector(".temperature .data");
+    weatherDataContainer.innerText = Math.round(temperature);
+    const date = weatherData.location.localtime;
+    const dateContainer = document.querySelector(".location .date");
+    dateContainer.innerText = `Today is ${date}`; //use moment.js timezone to format it properly
+  }
+
+  updateWeatherData();
+
   function displayCurrentWeatherIcon(weatherData) {
     const iconSrc = weatherData.current.condition.icon;
     const conditionIcon = document.body.querySelector(".condition-icon");
@@ -68,7 +89,7 @@ const weatherModule = (() => {
     console.log(weatherData);
   }
 
-  return { displayWeatherData };
+  return { updateWeatherData };
 })();
 
 export default weatherModule;

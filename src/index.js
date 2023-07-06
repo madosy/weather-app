@@ -1,10 +1,12 @@
 import "./style.scss";
-import clockModule from "./clockModule";
-import backgroundModule from "./backgroundModule";
-import quoteModule from "./quoteModule";
+// import clockModule from "./clockModule";
+// import backgroundModule from "./backgroundModule";
+// import quoteModule from "./quoteModule";
 import weatherModule from "./weatherModule";
 import locationModal from "./locationModal";
 import hiddenLayerHandler from "./hiddenLayerHandler";
+import "./weather-splash.js";
+import "./displayUserLocation";
 
 window.APP_NAME = "MADOSY_WEATHER_APP";
 
@@ -15,5 +17,3 @@ if (isLocationNotSet) {
   localStorage.setItem("madosy_weather_app.lat", "33.753746");
   localStorage.setItem("madosy_weather_app.lon", "-84.386330");
 }
-
-weatherModule.displayWeatherData();

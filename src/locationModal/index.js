@@ -7,6 +7,8 @@ const locationModal = (() => {
   const form = document.body.querySelector("form");
   const input = form.querySelector("input");
 
+  const showModal = () => modal.showModal();
+
   button.addEventListener("click", () => {
     modal.showModal();
   });
@@ -36,6 +38,8 @@ const locationModal = (() => {
     console.log(foundLocations);
     console.log(locationInfo);
   });
+
+  return { showModal };
 })();
 
 export default locationModal;
